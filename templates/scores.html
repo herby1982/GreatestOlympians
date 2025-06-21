@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🏅 Greatest Olympians</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #f2f2f2, #e0f7fa);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background-color: #004d40;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.2em;
+        }
+        p.subtitle {
+            margin: 5px 0 0;
+            font-size: 1em;
+            color: #b2dfdb;
+        }
+        main {
+            padding: 30px;
+            max-width: 900px;
+            margin: auto;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #00796b;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+        th {
+            background-color: #00695c;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🏅 Greatest Olympians</h1>
+        <p class="subtitle">Explore the legends of the Olympic Games — starting with the pool</p>
+    </header>
+    <main>
+        <h2 style="text-align:center;">🏊‍♂️ Top Olympic Swimmers by Score</h2>
+        <table>
+            <thead>
+                <tr>
+				<th>#</th>
+                    <th>Athlete</th>
+                    <th>Team</th>
+                    <th>Total Races</th>
+                    <th>Total Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in table %}
+                <tr>
+				<td>{{ loop.index }}</td>
+                    <td>{{ row.Athlete }}</td>
+                  <td>
+    <img src="https://flagcdn.com/h20/{{ row.Team[:2]|lower }}.png" alt="{{ row.Team }}" style="vertical-align: middle; margin-right: 6px;">
+    {{ row.Team }}
+</td>
+                    <td>{{ row.total_races }}</td>
+                    <td>{{ row.total_score }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        &copy; 2025 Greatest Olympians. Built with 🏋️‍♂️, 🏊‍♀️ and ❤️ in Python & DuckDB.
+    </footer>
+</body>
+</html>
+

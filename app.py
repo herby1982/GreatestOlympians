@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    con = duckdb.connect(r"C:\Users\jon_h\my_database.duckdb")
+    con = duckdb.connect("my_database.duckdb")
 
     query = """
     SELECT

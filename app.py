@@ -21,7 +21,7 @@ def index():
                 ELSE 0
             END
         ) AS INTEGER) AS total_score
-    FROM my_table
+    FROM olympic_results
     GROUP BY Athlete, Team
     ORDER BY total_score DESC
     LIMIT 15

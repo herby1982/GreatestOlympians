@@ -85,7 +85,7 @@
 				<td>{{ loop.index }}</td>
                     <td>{{ row.Athlete }}</td>
                   <td>
-    <img src="https://flagcdn.com/h20/{{ row.Team[:2]|lower }}.png" alt="{{ row.Team }}" style="vertical-align: middle; margin-right: 6px;">
+   <img src="https://flagcdn.com/h20/{{ row.Team|flag_code }}.png" alt="{{ row.Team }}" style="vertical-align: middle; margin-right: 6px;">
     {{ row.Team }}
 </td>
                     <td>{{ row.total_races }}</td>

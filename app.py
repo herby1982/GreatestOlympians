@@ -4,6 +4,22 @@ import pandas as pd
 
 app = Flask(__name__)
 
+# Country code override
+def flag_code(team):
+    override = {
+        "CHN": "cn",  # CHN → China flag
+        "UKR": "ua",
+        "NED": "nl",
+        "GBR": "gb",
+        "USA": "us",
+        "HUN": "hu"
+        # Add more as needed
+    }
+    return override.get(team, team[:2].lower())
+
+# Register Jinja filter
+app.jinja_env.filters['flag_code'] = flag_code
+
 @app.route("/")
 def index():
     con = duckdb.connect("my_database.duckdb")

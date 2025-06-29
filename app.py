@@ -12,6 +12,7 @@ def flag_code(team):
         "NED": "nl",
         "GBR": "gb",
         "USA": "us",
+        "ZIM":"zw",
         "HUN": "hu"
         # Add more as needed
     }

@@ -73,28 +73,34 @@
         <h2 style="text-align:center;">🏊‍♂️ Top Olympic Swimmers by Score</h2>
         <table>
             <thead>
-                <tr>
-				<th>#</th>
-                    <th>Athlete</th>
-                    <th>Team</th>
-                    <th>Total Races</th>
-                    <th>Total Score</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for row in table %}
-                <tr>
-				<td>{{ loop.index }}</td>
-                    <td>{{ row.Athlete }}</td>
-                  <td>
-   <img src="https://flagcdn.com/h20/{{ row.Team|flag_code }}.png" alt="{{ row.Team }}" style="vertical-align: middle; margin-right: 6px;">
-    {{ row.Team }}
-</td>
-                    <td>{{ row.total_races }}</td>
-                    <td>{{ row.total_score }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
+    <tr>
+        <th>#</th>
+        <th>Athlete</th>
+        <th>Team</th>
+        <th>Total Races</th>
+        <th>Golds</th>
+        <th>Silvers</th>
+        <th>Bronzes</th>
+        <th>Total Score</th>
+    </tr>
+</thead>
+<tbody>
+    {% for row in table %}
+    <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ row.Athlete }}</td>
+        <td>
+            <img src="https://flagcdn.com/h20/{{ row.Team|flag_code }}.png" alt="{{ row.Team }}" style="vertical-align: middle; margin-right: 6px;">
+            {{ row.Team }}
+        </td>
+        <td>{{ row.total_races }}</td>
+        <td>{{ row.Golds }}</td>
+        <td>{{ row.Silvers }}</td>
+        <td>{{ row.Bronzes }}</td>
+        <td>{{ row.total_score }}</td>
+    </tr>
+    {% endfor %}
+</tbody>
         </table>
     </main>
     <footer>

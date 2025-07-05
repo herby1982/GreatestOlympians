@@ -25,24 +25,23 @@ app.jinja_env.filters['flag_code'] = flag_code
 def index():
     con = duckdb.connect("my_database.duckdb")
 
-    query = """
-    SELECT
-        Athlete,
-        Team,
-        COUNT(*) AS total_races,
-        CAST(SUM(CASE WHEN Rank = 1 THEN 10
-                      WHEN Rank = 2 THEN 5
-                      WHEN Rank = 3 THEN 3
-                      ELSE 0 END) AS INTEGER) AS total_score,
-        COUNT(CASE WHEN Rank = 1 THEN 1 END) AS Golds,
-        COUNT(CASE WHEN Rank = 2 THEN 1 END) AS Silvers,
-        COUNT(CASE WHEN Rank = 3 THEN 1 END) AS Bronzes
-    FROM olympic_results
-    WHERE Sport = 'Swimming'
-    GROUP BY Athlete, Team
-    ORDER BY total_score DESC
-    LIMIT 15
-    """
+query = """
+SELECT
+    Athlete,
+    Team,
+    COUNT(*) AS total_races,
+    CAST(SUM(CASE WHEN Rank = 1 THEN 10
+                  WHEN Rank = 2 THEN 5
+                  WHEN Rank = 3 THEN 3
+                  ELSE 0 END) AS INTEGER) AS total_score,
+    COUNT(CASE WHEN Rank = 1 THEN 1 END) AS Golds,
+    COUNT(CASE WHEN Rank = 2 THEN 1 END) AS Silvers,
+    COUNT(CASE WHEN Rank = 3 THEN 1 END) AS Bronzes
+FROM olympic_results
+GROUP BY Athlete, Team
+ORDER BY total_score DESC
+LIMIT 15
+"""
     df = con.execute(query).fetchdf()
     return render_template("scores.html", table=df.to_dict(orient="records"))
 
